@@ -5,6 +5,9 @@ const destPath = 'dist/vuicc.exe';
 
 function downloadCompiler() {
     return new Promise((resolve, reject) => {
+        if (!fs.existsSync('dist')){
+            fs.mkdirSync('dist');
+        }
         const writeStream = fs.createWriteStream('dist/vuicc.exe');
 
         https.get('https://veniceunleashed.net/files/vuicc.exe', (res) => {
